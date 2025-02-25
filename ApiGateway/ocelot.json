@@ -1,0 +1,37 @@
+{
+  "Routes": [
+
+    // User Get List
+    {
+      "DownstreamPathTemplate": "/api/user", // gelen istekler nereye yönlendirilecek
+      "DownstreamScheme": "https", // gelen istekleri hangi protokol kabul edecek
+      "DownstreamHostAndPorts": [ // yönlendirme yapacağımız projenin host ve port bilgileri
+        {
+          "Host": "localhost",
+          "Port": 5000
+        }
+      ],
+      "UpstreamPathTemplate": "/services/user", // hangi isteklerin konfigüre edileceği
+      "UpstreamHttpMethod": [ "Get" ] // hangi metotların olacağı
+    },
+
+    // Order Get List
+    {
+      "DownstreamPathTemplate": "/api/order", // gelen istekler nereye yönlendirilecek
+      "DownstreamScheme": "https", // gelen istekleri hangi protokol kabul edecek
+      "DownstreamHostAndPorts": [ // yönlendirme yapacağımız projenin host ve port bilgileri
+        {
+          "Host": "localhost",
+          "Port": 5001
+        }
+      ],
+      "UpstreamPathTemplate": "/services/order", // hangi isteklerin konfigüre edileceği
+      "UpstreamHttpMethod": [ "Get" ] // hangi metotların olacağı
+    }
+  ],
+
+
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:7015" // Gateway'iminiz host ve port bilgileri
+  }
+}
